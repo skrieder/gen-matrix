@@ -2,18 +2,25 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define ROW 5
-#define COLUMN 4
+//#define ROW 5
+//#define COLUMN 5
 
 void writeMatrixtoFile(int row, int column, double mtrx[row][column]);
 
-double stuff[ROW][COLUMN];
+int ROW = 5;
+int COLUMN = 5;
+
 int a=0, b=0;
 //------------------------------------------------------------------------------
 //Main function
 
-int main()
+int main(int argc, char **argv)
 {
+  if( argc>2 ){
+    ROW = atoi(argv[1]);       //could be used to pass in parameters                                                                                                      
+    COLUMN = atoi(argv[1]);       //could be used to pass in parameters                                                                                                      
+  }
+  double stuff[ROW][COLUMN];
   for(a=0; a<ROW;a++)
     {
       for(b=0; b<COLUMN;b++)
@@ -21,8 +28,7 @@ int main()
 	  stuff[a][b]=rand();
         }
     }
-  //  double (*)[(long unsigned int)(column)]
-  //  writeMatrixtoFile(ROW, COLUMN, stuff[ROW][COLUMN]);
+
   writeMatrixtoFile(ROW, COLUMN, stuff);
 
   return 0;
